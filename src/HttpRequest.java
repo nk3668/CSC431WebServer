@@ -34,7 +34,7 @@ public final class HttpRequest implements Runnable {
 		// Get the request line of the HTTP request message
 		String requestLine = br.readLine();
 		
-		// Display the request lines
+		// Display the request line
 		System.out.println();
 		System.out.println(requestLine);
 		
