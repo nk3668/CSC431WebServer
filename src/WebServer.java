@@ -4,6 +4,7 @@ import java.net.Socket;
 
 public final class WebServer {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
 		ServerSocket server = new ServerSocket(8080);
 		// Establish the listen socket.
@@ -22,7 +23,7 @@ public final class WebServer {
 			thread.start();
 			
 		}
-
+		
 	}
 
 }

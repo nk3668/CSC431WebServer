@@ -64,22 +64,21 @@ public final class HttpRequest implements Runnable {
 			fileExists = false;
 		}
 		
-		// Construct the reponse message.
+		// Construct the response message.
 		String statusLine = null;
 		String contentTypeLine = null;
 		String entityBody = null;
 		if (fileExists) {
-			statusLine = "200 OK";
-			contentTypeLine = "Content-type: " + contentType(fileName) + CRLF;
+			statusLine = "HTTP /1.0 200 OK" + CRLF;
+			contentTypeLine = "Content-Type: " + contentType(fileName) + CRLF;
 		} else {
-			statusLine = "404 Not Found";
+			statusLine = "HTTP /1.0 404 Not Found" + CRLF;
 			contentTypeLine = "";
-			entityBody = "<HTML>" + "<HEAD><TITLE>Not Found</TITLE></HEAD>" + "<BODY>Not Found</BODY></HTML>";
+			entityBody = "<!DOCTYPE html><HTML><HEAD><TITLE>Not Found</TITLE></HEAD><BODY>Not Found</BODY></HTML>";
 		}
 		
 		// Sends the status line, content type line, and the entity body to the client.
 		os.writeBytes(statusLine);
-		os.writeBytes(CRLF);
 		os.writeBytes(contentTypeLine);
 		os.writeBytes(CRLF);
 		
@@ -91,7 +90,7 @@ public final class HttpRequest implements Runnable {
 			os.writeBytes(entityBody);
 		}
 		
-		os.writeBytes(CRLF);
+		//os.writeBytes(CRLF);
 		
 		// Close Streams and socket.
 		os.close();
