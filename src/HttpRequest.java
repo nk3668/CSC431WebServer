@@ -28,8 +28,6 @@ public final class HttpRequest implements Runnable {
 		this.socket = socket;
 	}
 	
-	
-	
 	@Override
 	public void run() {
 		try {
@@ -39,6 +37,10 @@ public final class HttpRequest implements Runnable {
 		}
 	}
 	
+	/**
+	 * Processes HTTP Request message and builds HTTP Response message 
+	 * @throws Exception
+	 */
 	private void processRequest() throws Exception {
 		// Get a reference to the socket's input and output streams
 		InputStream is = socket.getInputStream();
