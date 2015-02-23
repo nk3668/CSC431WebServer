@@ -7,6 +7,17 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.StringTokenizer;
 
+/*
+* Project 1: Web Server
+* Programmer: LaVonne Diller and Nate Kuhn
+* Course: CSC 431
+* Section: 1
+* Instructor: S. Lee
+*/
+
+/**
+ * The class that handle the HTTP Request
+ */
 public final class HttpRequest implements Runnable {
 
 	final static String CRLF = "\r\n";
@@ -100,6 +111,12 @@ public final class HttpRequest implements Runnable {
 		socket.close();
 	}
 
+	/**
+	 * Sends bytes that is the HTTP Response message header & entity body  
+	 * @param fis FileInputStream
+	 * @param os DataOutputStream
+	 * @throws Exception
+	 */
 	private static void sendBytes(FileInputStream fis, DataOutputStream os) throws Exception {
 		// Construct a 1K buffer to hold bytes on their way to the socket.
 		 byte[] buffer = new byte[1024];
@@ -111,6 +128,12 @@ public final class HttpRequest implements Runnable {
 		 }
 	}
 
+	/**
+	 * Searches filename for the file type requested 
+	 * and returns the contentType for the HTTP response message 
+	 * @param fileName name of file requested
+	 * @return contentType
+	 */
 	private String contentType(String fileName) {
 		if(fileName.endsWith(".htm") || fileName.endsWith(".html")) {
 			return "text/html";
