@@ -17,6 +17,8 @@ public final class HttpRequest implements Runnable {
 		this.socket = socket;
 	}
 	
+	
+	
 	@Override
 	public void run() {
 		try {
