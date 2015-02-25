@@ -105,8 +105,6 @@ public final class HttpRequest implements Runnable {
 			os.writeBytes(entityBody);
 		}
 		
-		//os.writeBytes(CRLF);
-		
 		// Close Streams and socket.
 		os.close();
 		br.close();
